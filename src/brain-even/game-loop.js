@@ -1,27 +1,17 @@
-import { greet, requestAnswer, requestRoundNumber } from '../cli.js';
+import {
+  greet, requestAnswerBinary, requestRoundNumber, finalScore, bye, wrongAnswerMessage,
+  correctMessage,
+} from '../cli.js';
 import {
   rulesMessage,
-  wrongAnswerMessage,
-  correctMessage,
-  askQuestion, bye, incorrectRoundNumber,
-  finalScore,
+  askQuestion,
+
 } from './messages.js';
 import {
   isAvaliableAnswer, isCorrectAnswer, isExit, reverseAnswer,
 } from './answers.js';
-import generateNumber from './generate-number.js';
-
-const FALLBACK_ROUND_NUMBER = 5;
-
-function validateRoundNumber(requestedNumberOfRounds) {
-  if (Number.isInteger(parseInt(requestedNumberOfRounds, 10))
-    && requestedNumberOfRounds > 0
-    && requestedNumberOfRounds <= 20
-  ) return requestedNumberOfRounds;
-
-  incorrectRoundNumber(FALLBACK_ROUND_NUMBER);
-  return FALLBACK_ROUND_NUMBER;
-}
+import { generateNumber } from '../utils/generate-number.js';
+import validateRoundNumber from '../utils/validate-round-number.js';
 
 export default function startGame() {
   const name = greet();
@@ -36,7 +26,7 @@ export default function startGame() {
 
     let currentAnswer = '';
     while (!isAvaliableAnswer(currentAnswer)) {
-      currentAnswer = requestAnswer();
+      currentAnswer = requestAnswerBinary();
       if (!isAvaliableAnswer(currentAnswer)) {
         rulesMessage();
       }
