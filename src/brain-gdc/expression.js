@@ -1,8 +1,4 @@
-import { getGenerator } from '../utils/generate-number.js';
-
-function isEven(number) {
-  return !(number % 2);
-}
+import { getGenerator, isEven } from '../utils/generate-number.js';
 
 function findGdc(_firstArgument, _secondArgument) {
   let firstArgument = parseInt(_firstArgument, 10);
