@@ -5,12 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "bin": {
     "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",
-    "brain-calc": "bin/brain-calc.js"
+    "brain-calc": "bin/brain-calc.js",
+    "brain-gdc": "bin/brain-gdc.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,9 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "@types/jest": "^29.2.5"
   }
 }
