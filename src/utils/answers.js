@@ -8,12 +8,6 @@ function isAvaliableAnswer(answer) {
   return Object.values(Answer).includes(answer);
 }
 
-function isCorrectAnswer(answer, isEven) {
-  if (Answer.POSITIVE === answer && isEven) return true;
-  if (Answer.NEGATIVE === answer && !isEven) return true;
-
-  return false;
-}
 
 function reverseAnswer(answer) {
   if (Answer.NEGATIVE === answer) return Answer.POSITIVE;
@@ -26,5 +20,5 @@ function isExit(answer) {
 }
 
 export {
-  Answer, isAvaliableAnswer, isCorrectAnswer, reverseAnswer, isExit,
+  Answer, isAvaliableAnswer, reverseAnswer, isExit,
 };

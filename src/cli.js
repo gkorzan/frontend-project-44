@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { Answer } from './brain-even/answers.js';
+import { Answer } from './utils/answers.js';
 
 function greet() {
   console.log('Welcome to the Brain Games!');

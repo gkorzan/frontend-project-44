@@ -8,8 +8,9 @@ import {
 
 } from './messages.js';
 import {
-  isAvaliableAnswer, isCorrectAnswer, isExit, reverseAnswer,
-} from './answers.js';
+  isAvaliableAnswer, isExit, reverseAnswer,
+} from '../utils/answers.js';
+import { isCorrectAnswer } from './isCorrectAnswer.js';
 import { generateNumber } from '../utils/generate-number.js';
 import validateRoundNumber from '../utils/validate-round-number.js';
 
