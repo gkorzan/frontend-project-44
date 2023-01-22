@@ -4,54 +4,54 @@ const MAX_NUMBER = 10;
 
 const generator = getGenerator(MAX_NUMBER);
 
-class ArithmeticProgression {
+function ArithmeticProgression(a, d) {
   /**
      * @param {Number} a - first number of progression secuence to start
      * @param {Number} d - common difference of progression
      */
-  constructor(a, d) {
-    this.firstNumber = a;
-    this.difference = d;
-  }
+  return {
+    firstNumber: a,
+    difference: d,
+  };
+}
 
-  /**
+/**
      *
      * @param {Number} n - number of element in progression to calc
      */
-  getNthTerm(n) {
-    return this.firstNumber + (n - 1) * this.difference;
-  }
+function getNthTerm(n, firstNumber, difference) {
+  return firstNumber + (n - 1) * difference;
+}
 
-  /**
+/**
      *
      * @param {Number} n - number of element until need to calc sum
      */
-  getSumOfFirstNElements(n) {
-    return (n * (this.firstNumber + this.getNthTerm(n))) / 2;
-  }
+function getSumOfFirstNElements(n, firstNumber) {
+  return (n * (firstNumber + getNthTerm(n))) / 2;
+}
 
-  * progressionGeneratorInfinite() {
-    for (let i = 0; i < 1000; i += 1) {
-      yield this.firstNumber + i * this.difference;
-    }
+function* progressionGeneratorInfinite(firstNumber, difference) {
+  for (let i = 0; i < 1000; i += 1) {
+    yield firstNumber + i * difference;
   }
+}
 
-  * progressionGenerator(numberOfElements) {
-    for (let i = 0; i < numberOfElements; i += 1) {
-      yield this.firstNumber + i * this.difference;
-    }
+function* progressionGenerator(numberOfElements, firstNumber, difference) {
+  for (let i = 0; i < numberOfElements; i += 1) {
+    yield firstNumber + i * difference;
   }
+}
 
-  printInfo() {
-    console.log(`First element: ${this.firstNumber}, difference: ${this.difference}`);
-  }
+function printInfo(firstNumber, difference) {
+  console.log(`First element: ${firstNumber}, difference: ${difference}`);
 }
 
 function generateRandomProgression() {
   const randomFirstElement = generator();
   const randomDifference = generator();
 
-  const arithmeticProgression = new ArithmeticProgression(randomFirstElement, randomDifference);
+  const arithmeticProgression = ArithmeticProgression(randomFirstElement, randomDifference);
 
   return arithmeticProgression;
 }
@@ -59,7 +59,13 @@ function generateRandomProgression() {
 function generateExpression(length = 6) {
   const arithmeticProgression = generateRandomProgression();
   const progressionArrayLenght = length;
-  const progressionArray = [...arithmeticProgression.progressionGenerator(progressionArrayLenght)];
+  const progressionArray = [
+    ...progressionGenerator(
+      progressionArrayLenght,
+      arithmeticProgression.firstNumber,
+      arithmeticProgression.difference,
+    ),
+  ];
   const generatorLocal = getGenerator(progressionArrayLenght);
   const numberToHideIndex = generatorLocal();
   const hiddenNumber = progressionArray[numberToHideIndex];
@@ -73,4 +79,11 @@ function generateExpression(length = 6) {
   return { hiddenArray, hiddenNumber };
 }
 
-export { ArithmeticProgression, generateExpression };
+export {
+  ArithmeticProgression,
+  generateExpression,
+  printInfo,
+  progressionGenerator,
+  progressionGeneratorInfinite,
+  getSumOfFirstNElements,
+};
