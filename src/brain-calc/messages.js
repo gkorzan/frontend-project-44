@@ -3,7 +3,7 @@ function rulesMessage() {
 }
 
 function askQuestion(firstArgument, secondArgument, operand) {
-  console.log(`Riddle me this! \n [${firstArgument} ${operand} ${secondArgument}]`);
+  console.log(`Question: ${firstArgument} ${operand} ${secondArgument}`);
 }
 
 function incorrectAnswerMessage() {
