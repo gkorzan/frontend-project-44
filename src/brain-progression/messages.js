@@ -4,7 +4,7 @@ function rulesMessage() {
 }
 
 function askQuestion(array) {
-  console.log(`Riddle me this! \n [${array.toString().split(',').join(' ')}]`);
+  console.log(`Question: ${array.toString().split(',').join(' ')}`);
 }
 
 function incorrectAnswerMessage() {
