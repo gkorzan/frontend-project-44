@@ -13,7 +13,7 @@ function requestAnswerBinary() {
 }
 
 function requestAnswerSimple() {
-  return readlineSync.question('Answer: ');
+  return readlineSync.question('Your answer: ');
 }
 
 function requestRoundNumber(name) {
@@ -80,4 +80,6 @@ export {
   bye,
   wrongAnswerMessage,
   correctMessage,
+  letsTryAgain,
+  winMessage
 };

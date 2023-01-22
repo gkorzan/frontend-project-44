@@ -1,6 +1,6 @@
 import {
-  greet, requestAnswerBinary, requestRoundNumber, finalScore, bye, wrongAnswerMessage,
-  correctMessage,
+  greet, requestAnswerSimple, wrongAnswerMessage,
+  correctMessage, letsTryAgain, winMessage
 } from '../cli.js';
 import {
   rulesMessage,
@@ -8,43 +8,30 @@ import {
 
 } from './messages.js';
 import {
-  isAvaliableAnswer, isExit, reverseAnswer,
+  reverseAnswer,
 } from '../utils/answers.js';
 import { isCorrectAnswer } from './isCorrectAnswer.js';
 import { generateNumber } from '../utils/generate-number.js';
-import validateRoundNumber from '../utils/validate-round-number.js';
 
 export default function startGame() {
   const name = greet();
   rulesMessage();
 
-  const numberOfRounds = validateRoundNumber(requestRoundNumber(name));
-  let correctAnswersNumber = 0;
 
-  for (let i = 0; i < numberOfRounds; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const currentNumber = generateNumber();
     askQuestion(currentNumber.number);
 
     let currentAnswer = '';
-    while (!isAvaliableAnswer(currentAnswer)) {
-      currentAnswer = requestAnswerBinary();
-      if (!isAvaliableAnswer(currentAnswer)) {
-        rulesMessage();
-      }
-    }
-
-    if (isExit(currentAnswer)) {
-      bye();
-      return;
-    }
+    currentAnswer = requestAnswerSimple();
 
     if (isCorrectAnswer(currentAnswer, currentNumber.isEven)) {
       correctMessage();
-      correctAnswersNumber += 1;
     } else {
       wrongAnswerMessage(name, reverseAnswer(currentAnswer), currentAnswer);
+      letsTryAgain(name)
+      return
     }
   }
-  finalScore(correctAnswersNumber, numberOfRounds, name);
-  bye();
+  winMessage(name)
 }
