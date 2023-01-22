@@ -1,4 +1,3 @@
-
 function rulesMessage() {
   console.log('What number is missing in the progression?');
 }
@@ -15,4 +14,3 @@ export {
   askQuestion,
   incorrectAnswerMessage,
 };
-

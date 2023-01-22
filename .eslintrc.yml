@@ -3,7 +3,6 @@
 # https://eslint.org/docs/user-guide/configuring#specifying-environments
 env:
   node: true
-  jest/globals: true
 
 extends:
   - 'airbnb-base'

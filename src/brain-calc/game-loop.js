@@ -1,6 +1,6 @@
 import {
   greet,
-  requestAnswerSimple, wrongAnswerMessage, correctMessage, letsTryAgain, winMessage
+  requestAnswerSimple, wrongAnswerMessage, correctMessage, letsTryAgain, winMessage,
 } from '../cli.js';
 import generateExpression from './expression.js';
 import {
@@ -25,9 +25,9 @@ export default function startGame() {
       correctMessage();
     } else {
       wrongAnswerMessage(name, currentExpression.resut, currentAnswer);
-      letsTryAgain(name)
-      return
+      letsTryAgain(name);
+      return;
     }
   }
-  winMessage(name)
+  winMessage(name);
 }

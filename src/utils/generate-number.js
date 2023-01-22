@@ -17,4 +17,6 @@ export default function generateNumber(max) {
   return { number, isEven: !(number % 2) };
 }
 
-export { getRandomInt, generateNumber, getGenerator, isEven };
+export {
+  getRandomInt, generateNumber, getGenerator, isEven,
+};

@@ -8,7 +8,6 @@ function isAvaliableAnswer(answer) {
   return Object.values(Answer).includes(answer);
 }
 
-
 function reverseAnswer(answer) {
   if (Answer.NEGATIVE === answer) return Answer.POSITIVE;
   return Answer.NEGATIVE;

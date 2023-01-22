@@ -81,5 +81,5 @@ export {
   wrongAnswerMessage,
   correctMessage,
   letsTryAgain,
-  winMessage
+  winMessage,
 };

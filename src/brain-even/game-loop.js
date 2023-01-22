@@ -1,6 +1,6 @@
 import {
   greet, requestAnswerSimple, wrongAnswerMessage,
-  correctMessage, letsTryAgain, winMessage
+  correctMessage, letsTryAgain, winMessage,
 } from '../cli.js';
 import {
   rulesMessage,
@@ -10,13 +10,12 @@ import {
 import {
   reverseAnswer,
 } from '../utils/answers.js';
-import { isCorrectAnswer } from './isCorrectAnswer.js';
+import isCorrectAnswer from './isCorrectAnswer.js';
 import { generateNumber } from '../utils/generate-number.js';
 
 export default function startGame() {
   const name = greet();
   rulesMessage();
-
 
   for (let i = 0; i < 3; i += 1) {
     const currentNumber = generateNumber();
@@ -29,9 +28,9 @@ export default function startGame() {
       correctMessage();
     } else {
       wrongAnswerMessage(name, reverseAnswer(currentAnswer), currentAnswer);
-      letsTryAgain(name)
-      return
+      letsTryAgain(name);
+      return;
     }
   }
-  winMessage(name)
+  winMessage(name);
 }

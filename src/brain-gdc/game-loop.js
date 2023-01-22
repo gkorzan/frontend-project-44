@@ -9,10 +9,8 @@ import {
 } from './messages.js';
 
 export default function startGame() {
-
   const name = greet();
   rulesMessage();
-
 
   for (let i = 0; i < 3; i += 1) {
     const currentExpression = generateExpression();
@@ -21,14 +19,14 @@ export default function startGame() {
       currentExpression.secondArgument,
     );
     const currentAnswer = parseInt(requestAnswerSimple(), 10);
-    
+
     if (currentExpression.result === currentAnswer) {
       correctMessage();
     } else {
       wrongAnswerMessage(name, currentExpression.result, currentAnswer);
-      letsTryAgain(name)
-      return
+      letsTryAgain(name);
+      return;
     }
   }
-  winMessage(name)
+  winMessage(name);
 }

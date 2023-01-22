@@ -1,10 +1,10 @@
-import { Answer } from "../utils/answers.js";
+import { Answer } from '../utils/answers.js';
 
 function isCorrectAnswer(answer, isEven) {
-    if (Answer.POSITIVE === answer && isEven) return true;
-    if (Answer.NEGATIVE === answer && !isEven) return true;
-  
-    return false;
-  }
+  if (Answer.POSITIVE === answer && isEven) return true;
+  if (Answer.NEGATIVE === answer && !isEven) return true;
 
-  export {isCorrectAnswer}
+  return false;
+}
+
+export default isCorrectAnswer;
