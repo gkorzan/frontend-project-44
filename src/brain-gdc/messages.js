@@ -4,7 +4,7 @@ function rulesMessage() {
 }
 
 function askQuestion(firstArgument, secondArgument) {
-  console.log(`Riddle me this! \n [${firstArgument} ${secondArgument}]`);
+  console.log(`Question: ${firstArgument} ${secondArgument}`);
 }
 
 function incorrectAnswerMessage() {
